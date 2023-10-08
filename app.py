@@ -142,3 +142,55 @@ with st.container():
         st.markdown(contact_form, unsafe_allow_html=True)
     with right_column:
         st.empty()
+
+
+
+# test_header.py
+
+import streamlit as st
+
+def test_header():
+    # Simulate running the Streamlit app
+    with st.container():
+        st.subheader("Hi, we are  B-Events :wave:")
+        st.title("A videography company from Romania ")
+        st.write("We offer professional services for your events")
+        st.write("[Follow us  >](https://www.instagram.com/b_events.ro/?hl=en)")
+
+    # Check if elements are present in the expected order
+    assert st.container().placeholder.markdown_strings == [
+        "### Hi, we are  B-Events :wave:",
+        "# A videography company from Romania ",
+        "We offer professional services for your events",
+        "[Follow us  >](https://www.instagram.com/b_events.ro/?hl=en)"
+    ]
+
+if __name__ == "__main__":
+    test_header()
+
+# test_project_content.py
+
+import streamlit as st
+from your_app import show_project_content  # Import the function that displays project content
+
+def test_project_content():
+    # Simulate running the Streamlit app
+    with st.container():
+        show_project_content()
+
+    # Check if the expected content for the project is present
+    assert st.container().placeholder.markdown_strings == [
+        "# Sebastian & Andreea | Wedding Clip | 2023-09-10",
+        """
+        Sebastian and Andreea's Love Story Unveiled
+
+        Get ready to be swept off your feet by the love and elegance of Sebastian and Andreea's wedding day. 
+        From the tender glances to the joyous laughter, every moment is a testament to their beautiful connection. 
+        Join us in this cinematic journey capturing the essence of their love, as Sebastian and Andreea say "I do" 
+        and embark on a lifetime of happiness together.
+        """,
+        "[Watch Video...](https://www.youtube.com/watch?v=a-DeZ_bW-Bw)"
+    ]
+
+if __name__ == "__main__":
+    test_project_content()
